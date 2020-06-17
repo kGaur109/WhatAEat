@@ -22,7 +22,6 @@
 
         <activity android:name=".SignUp"></activity>
         <activity android:name=".SignUpGoal"></activity>
-        <activity android:name=".EditProfileGoal"></activity>
     </application>
 
 </manifest>
