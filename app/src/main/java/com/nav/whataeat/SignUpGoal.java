@@ -71,13 +71,13 @@ public class SignUpGoal extends AppCompatActivity {
             long goalId = 1;
 
             double targetWeightSQL = db.quoteSmart(doubleTargetWeightKg);
-            db.update("goal", "goal_id", goalId, "goal_target_weight",targetWeightSQL);
+            db.update("goal", "_id", goalId, "goal_target_weight",targetWeightSQL);
 
             int intIWantToSQL = db.quoteSmart(intIWantTo);
-            db.update("goal", "goal_id", goalId, "goal_i_want_to", intIWantToSQL);
+            db.update("goal", "_id", goalId, "goal_i_want_to", intIWantToSQL);
 
             String weeklyGoalSQL = db.quoteSmart(stringWeeklyGoal);
-            db.update("goal", "goal_id", goalId, "goal_weekly_goal", weeklyGoalSQL);
+            db.update("goal", "_id", goalId, "goal_weekly_goal", weeklyGoalSQL);
 
         }
 
@@ -86,13 +86,13 @@ public class SignUpGoal extends AppCompatActivity {
 
             long rowId = 1;
             String fields[] = new String[] {
-                    "user_id",
+                    "_id",
                     "user_dob",
                     "user_gender",
                     "user_height",
                     "user_activity_level"
             };
-            Cursor c = db.selectPrimaryKey("users", "user_id", rowId, fields);
+            Cursor c = db.selectPrimaryKey("users", "_id", rowId, fields);
 
             String userDOB = c.getString(1);
             String userGender = c.getString(2);
@@ -187,7 +187,7 @@ public class SignUpGoal extends AppCompatActivity {
             // Update Database
             double energySQL = db.quoteSmart(bmrGoal);
             long goalId = 1;
-            db.update("goal", "goal_id", goalId, "goal_energy", energySQL);
+            db.update("goal", "_id", goalId, "goal_energy", energySQL);
 
         }
 

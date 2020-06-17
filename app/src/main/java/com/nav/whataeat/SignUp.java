@@ -214,7 +214,7 @@ public class SignUp extends AppCompatActivity {
 
             // Input for user table
             db.insert("users",
-                    "user_id, user_email, user_dob, user_gender, user_height, user_activity_level",
+                    "_id, user_email, user_dob, user_gender, user_height, user_activity_level",
                     stringInput);
 
             // Input for goal table
@@ -226,7 +226,7 @@ public class SignUp extends AppCompatActivity {
             stringInput = "NULL, " + weightKgSQL + "," + goalDateSQL;
 
             db.insert("goal",
-                    "goal_id, goal_current_weight, goal_date",
+                    "_id, goal_current_weight, goal_date",
                     stringInput);
 
             Toast.makeText(this, "Signed Up Successfully", Toast.LENGTH_LONG).show();

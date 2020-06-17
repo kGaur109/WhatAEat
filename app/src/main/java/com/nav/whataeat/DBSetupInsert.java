@@ -18,7 +18,7 @@ public class DBSetupInsert {
         DBAdapter db = new DBAdapter(context);
         db.open();
         db.insert("categories",
-                "category_id, category_name, category_parent_id",
+                "_id, category_name, category_parent_id",
                 values);
         db.close();
     }
@@ -36,7 +36,7 @@ public class DBSetupInsert {
         DBAdapter db = new DBAdapter(context);
         db.open();
         db.insert("food",
-                "food_id, food_name, food_serving_size, food_user_id, food_category", values);
+                "_id, food_name, food_serving_size, food_user_id, food_category", values);
         db.close();
     }
 

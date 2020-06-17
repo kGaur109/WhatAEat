@@ -73,4 +73,14 @@
     <string name="let_s_go">Let\'s Go</string>
     <string name="i_want_to">I want to</string>
 
+    <string name="profile">Profile</string>
+    <string name="goal">Goal</string>
+    <string name="categories">Categories</string>
+    <string name="food">Food</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="open_drawer">Open navigation drawer</string>
+    <string name="close_drawer">Close navigation drawer</string>
+
 </resources>
