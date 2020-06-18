@@ -33,7 +33,7 @@ public class foodCursorAdaptor extends CursorAdapter {
         TextView textViewSubname = (TextView) view.findViewById(R.id.textViewSubname);
 
         // extract properties from the cursor
-        String getCalories = cursor.getString(cursor.getColumnIndexOrThrow("food_serving_size"));
+        String getCalories = cursor.getString(cursor.getColumnIndexOrThrow("food_calorie"));
         String getName = cursor.getString(cursor.getColumnIndexOrThrow("food_name"));
         String getCategory = cursor.getString(cursor.getColumnIndexOrThrow("food_category"));
 

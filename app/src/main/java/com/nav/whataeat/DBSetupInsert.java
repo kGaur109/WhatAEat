@@ -37,7 +37,7 @@ public class DBSetupInsert {
         DBAdapter db = new DBAdapter(context);
         db.open();
         db.insert("food",
-                "_id, food_name, food_serving_size, food_user_id, food_category", values);
+                "_id, food_name, food_calorie, food_user_id, food_category", values);
         db.close();
     }
 

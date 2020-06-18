@@ -1,44 +1,47 @@
 package com.nav.whataeat;
 
+import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // Class Variables
+    private View mainView;
+    private Cursor listCursor;
+
+    private MenuItem menuItemEdit;
+
+    // Fragment Variables required to make the fragment run
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
+    // Constructor
     public HomeFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
@@ -55,17 +58,97 @@ public class HomeFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        // Set title
-        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setTitle("Home");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        mainView = inflater.inflate(R.layout.fragment_home, container, false);
+        return mainView;
     }
+
+    // set Main View
+    private void setMainView(int id) {
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mainView = inflater.inflate(id, null);
+        ViewGroup rootView = (ViewGroup) getView();
+        rootView.removeAllViews();
+        rootView.addView(mainView);
+    }
+
+    // On Activity Created
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Toast.makeText(getActivity(), "Home", Toast.LENGTH_SHORT).show();
+
+        // Set title
+        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setTitle("Home");
+
+        initializeHome();
+
+//        setHasOptionsMenu(true);
+    }
+
+    // creating Options action toolbar
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+        // Inflate Menu
+        MenuInflater menuInflater = ((MainActivity)getActivity()).getMenuInflater();
+        inflater.inflate(R.menu.menu_goal, menu);
+
+        menuItemEdit = menu.findItem(R.id.goal_action_edit);
+
+    }
+
+    // when action icon clicked on
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+
+        int id = menuItem.getItemId();
+
+//        if(id == R.id.goal_action_edit) {
+//
+//        }
+
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+    // Initializing Home
+    private void initializeHome() {
+
+        // ImageButton Listener
+        ImageView imageViewAddBreakfast = (ImageView)getActivity().findViewById(R.id.imageViewAddBreakfast);
+        imageViewAddBreakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFood(0, "Breakfast"); // 0 == Breakfast
+            }
+        });
+    } // initializeHome
+
+    // Adding Food
+    private void addFood(int mealNumber, String parentName) {
+
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        fragmentClass = AddFoodToDiaryFragment.class;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // Send Variable
+        Bundle bundle = new Bundle();
+        bundle.putString("mealName", parentName);
+        fragment.setArguments(bundle);
+
+        // Move user to correct layout
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+    } // addFood
 
     public interface OnFragmentInteractionListener {
     }

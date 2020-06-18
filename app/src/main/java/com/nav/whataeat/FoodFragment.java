@@ -148,7 +148,7 @@ public class FoodFragment extends Fragment {
                 "_id",
                 "food_name",
                 "food_category",
-                "food_serving_size"
+                "food_calorie"
         };
         foodCursor = db.select("food", fields, "food_name");
 

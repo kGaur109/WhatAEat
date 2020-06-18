@@ -26,11 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link GoalFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class GoalFragment extends Fragment {
 
     // Class Variables
@@ -65,9 +61,6 @@ public class GoalFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        // Set title
-        Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setTitle("Goal");
     }
 
     @Override
@@ -474,9 +467,11 @@ public class GoalFragment extends Fragment {
 
             Toast.makeText(getActivity(), "Changes saved.", Toast.LENGTH_SHORT).show();
 
-            // Move User to correct design
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//            fragmentManager.beginTransaction().replace(R.id.flContent, new GoalFragment(), GoalFragment.class.getClass()).commit();
+//            // Move User to correct design
+//            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//            fragmentManager.beginTransaction().replace(R.id.flContent, new GoalFragment(), GoalFragment.class.getName()).commit();
+//
+//            initializeDataFromDBAndDisplay();
 
         } // no error
 

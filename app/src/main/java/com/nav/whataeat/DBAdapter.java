@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBAdapter {
     //    VARIABLES
     private static final String databaseName = "WhatAEat";
-    private static final int databaseVersion = 7;
+    private static final int databaseVersion = 8;
 
     //    DATABASE VARIABLES
     private final Context context;
@@ -116,6 +116,7 @@ public class DBAdapter {
                         " food_id INTEGER, " +
                         " food_name VARCHAR," +
                         " food_serving_size DOUBLE," +
+                        " food_calorie DOUBLE," +
                         " food_user_id INT," +
                         " food_category VARCHAR," +
                         "food_note VARCHAR);");

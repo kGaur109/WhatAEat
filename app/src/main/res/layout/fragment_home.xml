@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
     android:layout_width="match_parent"
@@ -10,147 +11,71 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:paddingTop="16dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <TextView
-            android:id="@+id/textHeader"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="15dp"
-            android:text="@string/your_goals"
-            android:textAlignment="center"
-            android:textSize="35sp"
-            android:layout_marginTop="10dp"/>
-
-        <TextView
-            android:id="@+id/textViewError"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="" />
+<!--        <TextView-->
+<!--            android:id="@+id/textHeader"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingBottom="11dp"-->
+<!--            android:text="@string/your_meals"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textSize="30sp"-->
+<!--            android:layout_marginTop="10dp"/>-->
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!--Current Weight-->
+            <!--Breakfast-->
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="24dp">
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewCurrentWeight"
+                <ImageView
+                    android:id="@+id/imageViewAddBreakfast"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="10dp"
-                    android:text="@string/current_weight" />
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_menu_add" />
 
                 <TextView
-                    android:id="@+id/textViewCurrentWeight_1"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textViewHeadlineBreakfast"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="" />
-
+                    android:text="@string/breakfast"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"/>
 
             </TableRow>
-            <!--Current Weight-->
+            <!--Breakfast-->
 
-            <!--Target Weight-->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="24dp">
+<!--            &lt;!&ndash;Lunch&ndash;&gt;-->
+<!--            <TableRow-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
 
-                <TextView
-                    android:id="@+id/textViewTargetWeight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/target_weight"/>
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageViewAddLunch"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_menu_add"-->
+<!--                    android:layout_marginBottom="10dp"/>-->
 
-                <TextView
-                    android:id="@+id/textViewTargetWeight_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewHeadlineLunch"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Lunch"-->
+<!--                    android:textSize="18sp"/>-->
 
-            </TableRow>
-            <!--Target Weight-->
-
-            <!--Method-->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
-
-                <TextView
-                    android:id="@+id/textViewMethod"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/method" />
-
-                <TextView
-                    android:id="@+id/textViewMethod_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="4dp"
-                    android:text="" />
-
-            </TableRow>
-            <!--Method-->
-
-            <!--Activity level-->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
-
-                <TextView
-                    android:id="@+id/textViewActivityLevel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_level" />
-
-                <TextView
-                    android:id="@+id/textViewActivityLevel_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="" />
-
-            </TableRow>
-            <!--Activity level-->
-
-            <!--Energy Goals-->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="34dp">
-
-                <TextView
-                    android:id="@+id/textViewEnergyGoals"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/you_need_to_consume"
-                    android:textSize="17sp"
-                    android:layout_marginEnd="3dp"/>
-
-                <TextView
-                    android:id="@+id/textViewEnergyGoals_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="17sp"
-                    android:text="" />
-
-            </TableRow>
-            <!--Energy Goals-->
+<!--            </TableRow>-->
+<!--            &lt;!&ndash;Lunch&ndash;&gt;-->
 
         </TableLayout>
 
-        <!-- Name Label -->
 
     </LinearLayout>
 </ScrollView>

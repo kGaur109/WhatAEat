@@ -32,6 +32,7 @@ import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
+        AddFoodToDiaryFragment.OnFragmentInteractionListener,
         CategoriesFragment.OnFragmentInteractionListener,
         FoodFragment.OnFragmentInteractionListener,
         GoalFragment.OnFragmentInteractionListener,
@@ -63,15 +64,6 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
-        // Settings Button
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         // Navigation
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -82,16 +74,6 @@ public class MainActivity extends AppCompatActivity
         // Navigation Items
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-//        // Passing each menu ID as a set of Ids because each
-//        // menu should be considered as top level destinations.
-//        mAppBarConfiguration = new AppBarConfiguration.Builder(
-//                R.id.nav_home, R.id.nav_profile, R.id.nav_goal, R.id.nav_categories, R.id.nav_food)
-//                .setDrawerLayout(drawer)
-//                .build();
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(navigationView, navController);
 
         // STETHO
         Stetho.initializeWithDefaults(this);
@@ -142,13 +124,6 @@ public class MainActivity extends AppCompatActivity
 //        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
