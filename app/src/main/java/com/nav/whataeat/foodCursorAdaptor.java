@@ -37,9 +37,11 @@ public class foodCursorAdaptor extends CursorAdapter {
         String getName = cursor.getString(cursor.getColumnIndexOrThrow("food_name"));
         String getCategory = cursor.getString(cursor.getColumnIndexOrThrow("food_category"));
 
+        String subline = getCategory + ", Calories per 100gm";
+
         // populate fields with extracted properties
         textViewListName.setText(getName);
         textViewListNumber.setText(getCalories);
-        textViewSubname.setText(getCategory);
+        textViewSubname.setText(subline);
     }
 }

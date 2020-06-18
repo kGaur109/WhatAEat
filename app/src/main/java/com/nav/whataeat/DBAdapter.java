@@ -225,8 +225,8 @@ public class DBAdapter {
         return mCursor;
     }
 
-    public Cursor select(String table, String[] fields) throws SQLException {
-        Cursor mCursor = db.query(table, fields, null, null, null, null, null);
+    public Cursor select(String table, String[] fields, String orderBy) throws SQLException {
+        Cursor mCursor = db.query(table, fields, null, null, orderBy, null, null);
         if(mCursor != null) {
             mCursor.moveToFirst();
         }

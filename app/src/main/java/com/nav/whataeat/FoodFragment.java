@@ -155,7 +155,7 @@ public class FoodFragment extends Fragment {
                 "food_category",
                 "food_serving_size"
         };
-        foodCursor = db.select("food", fields);
+        foodCursor = db.select("food", fields, "food_name");
 
         // Find ListView to populate
         ListView lvItems = (ListView) getActivity().findViewById(R.id.listViewFood);

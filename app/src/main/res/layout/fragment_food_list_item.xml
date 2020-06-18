@@ -30,7 +30,8 @@
         android:layout_height="wrap_content"
         android:text="Sub Text"
         android:layout_alignStart="@+id/textViewListName"
-        android:layout_below="@+id/textViewListNumber"/>
+        android:layout_below="@+id/textViewListNumber"
+        android:layout_marginBottom="2dp"/>
 
 <!--    <TextView-->
 <!--        android:id="@+id/textViewCalories"-->
