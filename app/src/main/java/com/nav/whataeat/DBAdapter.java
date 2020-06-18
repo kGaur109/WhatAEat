@@ -225,6 +225,14 @@ public class DBAdapter {
         return mCursor;
     }
 
+    public Cursor select(String table, String[] fields) throws SQLException {
+        Cursor mCursor = db.query(table, fields, null, null, null, null, null);
+        if(mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
     // Update
     public boolean update(String table, String primaryKey, long rowId, String field, String value) {
         value = value.substring(1, value.length()-1);
