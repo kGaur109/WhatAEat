@@ -33,21 +33,17 @@ public class FoodFragment extends Fragment {
     private View mainView;
     private Cursor foodCursor;
 
-    // Action buttons on toolbar
-    private MenuItem menuItemEdit;
-    private MenuItem menuItemDelete;
-
-    // Holder ofr buttons on toolbar
-    private String currentId;
-    private String currentName;
+//    // Action buttons on toolbar
+//    private MenuItem menuItemEdit;
+//    private MenuItem menuItemDelete;
+//
+//    // Holder ofr buttons on toolbar
+//    private String currentId;
+//    private String currentName;
 
     // Fragment Variables required for making the fragment RUN
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -105,42 +101,42 @@ public class FoodFragment extends Fragment {
         rootView.addView(mainView);
     }
 
-    // creating Options action toolbar
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//    // creating Options action toolbar
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//
+//        // Inflate Menu
+//        ((MainActivity)getActivity()).getMenuInflater().inflate(R.menu.menu_food, menu);
+//
+//        // Assign menu items to variables
+//        menuItemEdit = menu.findItem(R.id.food_action_edit);
+//        menuItemDelete = menu.findItem(R.id.food_action_delete);
+//
+//        // Hide as default
+//        menuItemEdit.setVisible(false);
+//        menuItemDelete.setVisible(false);
+//    }
 
-        // Inflate Menu
-        ((MainActivity)getActivity()).getMenuInflater().inflate(R.menu.menu_food, menu);
-
-        // Assign menu items to variables
-        menuItemEdit = menu.findItem(R.id.food_action_edit);
-        menuItemDelete = menu.findItem(R.id.food_action_delete);
-
-        // Hide as default
-        menuItemEdit.setVisible(false);
-        menuItemDelete.setVisible(false);
-    }
-
-    // when action icon clicked on
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-
-        int id = menuItem.getItemId();
-
-        if(id == R.id.food_action_add) {
-            Toast.makeText(getActivity(), "Go to Add Menu" , Toast.LENGTH_SHORT).show();
-//            createNewFood();
-        }
-        else if(id == R.id.food_action_edit) {
-            Toast.makeText(getActivity(), "Go to Edit Menu" , Toast.LENGTH_SHORT).show();
-//            createNewFood();
-        }
-        else if(id == R.id.food_action_delete) {
-            Toast.makeText(getActivity(), "Go to Remove Menu" , Toast.LENGTH_SHORT).show();
-//            createNewFood();
-        }
-
-        return super.onOptionsItemSelected(menuItem);
-    }
+//    // when action icon clicked on
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem menuItem) {
+//
+//        int id = menuItem.getItemId();
+//
+//        if(id == R.id.food_action_add) {
+//            Toast.makeText(getActivity(), "Go to Add Menu" , Toast.LENGTH_SHORT).show();
+////            createNewFood();
+//        }
+//        else if(id == R.id.food_action_edit) {
+//            Toast.makeText(getActivity(), "Go to Edit Menu" , Toast.LENGTH_SHORT).show();
+////            createNewFood();
+//        }
+//        else if(id == R.id.food_action_delete) {
+//            Toast.makeText(getActivity(), "Go to Remove Menu" , Toast.LENGTH_SHORT).show();
+////            createNewFood();
+//        }
+//
+//        return super.onOptionsItemSelected(menuItem);
+//    }
 
     // Populate List
     public void populateListFood() {
@@ -148,7 +144,6 @@ public class FoodFragment extends Fragment {
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
-        // Get Categories
         String fields[] = new String[] {
                 "_id",
                 "food_name",
@@ -169,10 +164,10 @@ public class FoodFragment extends Fragment {
         db.close();
     } // populateList
 
-    // List Item Clicked
-    public void listItemClicked(int listItemClickedId) {
-
-    }
+//    // List Item Clicked
+//    public void listItemClicked(int listItemClickedId) {
+//
+//    }
 
     public interface OnFragmentInteractionListener {
     }

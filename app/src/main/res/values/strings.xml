@@ -89,5 +89,11 @@
     <string name="save">Save</string>
     <string name="edit_item">Edit Item</string>
     <string name="calories">Cal</string>
+    <string name="edit_user_profile">Edit User Profile</string>
+    <string name="current_weight">Current Weight</string>
+    <string name="method">Method</string>
+    <string name="kg"> Kg</string>
+    <string name="kg_week"> Kg Per Week</string>
+    <string name="you_need_to_consume">You need to consume</string>
 
 </resources>

@@ -1,14 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home" />
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:text="@string/your_goals"
+            android:textAlignment="center"
+            android:textSize="35sp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--Current Weight-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/textViewCurrentWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/current_weight" />
+
+                <TextView
+                    android:id="@+id/textViewCurrentWeight_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="" />
+
+
+            </TableRow>
+            <!--Current Weight-->
+
+            <!--Target Weight-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/textViewTargetWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/target_weight"/>
+
+                <TextView
+                    android:id="@+id/textViewTargetWeight_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="" />
+
+            </TableRow>
+            <!--Target Weight-->
+
+            <!--Method-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/textViewMethod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/method" />
+
+                <TextView
+                    android:id="@+id/textViewMethod_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="" />
+
+            </TableRow>
+            <!--Method-->
+
+            <!--Activity level-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/textViewActivityLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_level" />
+
+                <TextView
+                    android:id="@+id/textViewActivityLevel_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+            </TableRow>
+            <!--Activity level-->
+
+            <!--Energy Goals-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="34dp">
+
+                <TextView
+                    android:id="@+id/textViewEnergyGoals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/you_need_to_consume"
+                    android:textSize="17sp"
+                    android:layout_marginEnd="3dp"/>
+
+                <TextView
+                    android:id="@+id/textViewEnergyGoals_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:text="" />
+
+            </TableRow>
+            <!--Energy Goals-->
+
+        </TableLayout>
+
+        <!-- Name Label -->
+
+    </LinearLayout>
+</ScrollView>

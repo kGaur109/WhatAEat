@@ -1,14 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    android:fitsSystemWindows="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile" />
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/textHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:text="@string/edit_user_profile"
+            android:textAlignment="center"
+            android:textSize="35sp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/textViewError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--DOB-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/textViewEditDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="10dp"
+                    android:layout_marginEnd="2dp"
+                    android:text="@string/date_of_birth" />
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="UselessParent">
+
+                        <Spinner
+                            android:id="@+id/spinnerEditDay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+
+                        <Spinner
+                            android:id="@+id/spinnerEditMonth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/months" />
+
+                        <Spinner
+                            android:id="@+id/spinnerEditYear"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </TableRow>
+            <!--DOB-->
+
+            <!--Gender-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+                <TextView
+                    android:id="@+id/textViewEditGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingTop="5dp"
+                    android:text="@string/gender"
+                    />
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:ignore="UselessParent">
+                        <RadioGroup
+                            android:id="@+id/radioGroupEditGender"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            tools:ignore="UselessParent">
+
+                            <RadioButton
+                                android:id="@+id/radioButtonEditMale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="34dp"
+                                android:text="@string/male" />
+
+                            <RadioButton
+                                android:id="@+id/radioButtonEditFemale"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/female" />
+                        </RadioGroup>
+                    </TableRow>
+
+                </TableLayout>
+            </TableRow>
+            <!--//Gender-->
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/textViewEditHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/height" />
+
+                <EditText
+                    android:id="@+id/editTextEditHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="3"
+                    android:hint="@string/in_cm"
+                    android:inputType="number"
+                    android:autofillHints="Height" />
+            </TableRow>
+
+            <!--Save Button-->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp">
+
+                <TextView
+                    android:id="@+id/textView01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
+
+                <Button
+                    android:id="@+id/buttonProfileSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </TableRow>
+
+        </TableLayout>
+
+        <!-- Name Label -->
+
+    </LinearLayout>
+</ScrollView>

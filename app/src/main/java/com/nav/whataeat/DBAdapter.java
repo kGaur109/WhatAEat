@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBAdapter {
     //    VARIABLES
     private static final String databaseName = "WhatAEat";
-    private static final int databaseVersion = 6;
+    private static final int databaseVersion = 7;
 
     //    DATABASE VARIABLES
     private final Context context;
@@ -66,7 +66,7 @@ public class DBAdapter {
                         " user_dob DATE," +
                         " user_gender INT," +
                         " user_height INT," +
-                        " User_activity_level INT," +
+                        " user_activity_level INT," +
                         " user_last_seen TIME," +
                         " user_note VARCHAR);");
             }
@@ -240,6 +240,17 @@ public class DBAdapter {
         ContentValues args = new ContentValues();
         args.put(field, value);
         return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String[] fields, String[] values) {
+
+        ContentValues args = new ContentValues();
+        for(int i = 0; i<fields.length; i++) {
+            values[i] = values[i].substring(1, values[i].length() - 1);
+            args.put(fields[i], values[i]);
+            db.update(table, args, primaryKey + "=" + rowId, null);
+        }
+        return true;
     }
 
     public boolean update(String table, String primaryKey, long rowId, String field, double value) {
