@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBAdapter {
     //    VARIABLES
     private static final String databaseName = "WhatAEat";
-    private static final int databaseVersion = 8;
+    private static final int databaseVersion = 10;
 
     //    DATABASE VARIABLES
     private final Context context;
@@ -92,7 +92,8 @@ public class DBAdapter {
                         " fd_date DATE," +
                         " fd_meal_number INT," +
                         " fd_food_id INT," +
-                        " serving_size DOUBLE);");
+                        " fd_food_energy DOUBLE," +
+                        " fd_serving_size_gram DOUBLE);");
             }
             catch (SQLException e) {
                 e.printStackTrace();
@@ -119,7 +120,7 @@ public class DBAdapter {
                         " food_calorie DOUBLE," +
                         " food_user_id INT," +
                         " food_category VARCHAR," +
-                        "food_note VARCHAR);");
+                        " food_note VARCHAR);");
             }
             catch (SQLException e) {
                 e.printStackTrace();
@@ -211,7 +212,7 @@ public class DBAdapter {
     }
 
     public Cursor select(String table, String[] fields, String whereClause, String whereCondition) throws SQLException {
-        Cursor mCursor = db.query(table, fields, whereClause + "=\"" + whereCondition + "\"", null, null, null, null);
+        Cursor mCursor = db.query(table, fields, whereClause + " = " + whereCondition, null, null, null, null);
         if(mCursor != null) {
             mCursor.moveToFirst();
         }

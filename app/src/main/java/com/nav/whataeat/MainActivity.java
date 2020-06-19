@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         toolbar.setTitle("Diet");
 
+        // Creating a Fragment
         Fragment fragment = null;
         Class fragmentClass = null;
         fragmentClass = HomeFragment.class;

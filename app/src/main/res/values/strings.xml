@@ -98,8 +98,10 @@
     <string name="breakfast">Breakfast</string>
     <string name="your_meals">Your Meals</string>
     <string name="category">Category</string>
-    <string name="serving_in_pcs">Serving in pcs</string>
+    <string name="serving_in">Serving in </string>
     <string name="serving_in_gram">Serving in gram</string>
     <string name="add_to_food_diary">Add To Food Diary</string>
+    <string name="pcs"> pcs</string>
+    <string name="gram"> grams</string>
 
 </resources>
