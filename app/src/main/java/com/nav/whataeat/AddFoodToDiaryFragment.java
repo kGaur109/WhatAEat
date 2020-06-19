@@ -57,14 +57,25 @@ public class AddFoodToDiaryFragment extends Fragment {
         Objects.requireNonNull(((MainActivity) Objects.requireNonNull(getActivity())).getSupportActionBar()).setTitle("Add food to diary");
 
         Bundle bundle = this.getArguments();
+        String stringMealNumber = "0";
         String stringMealName = "0";
 
         if(bundle != null) {
-            stringMealName = bundle.getString("mealName");
+            stringMealNumber = bundle.getString("mealNumber");
         }
 
         // populate the list of food
-        populateListWithFood("0", stringMealName);
+        if(stringMealNumber.equals("0")) {
+            stringMealName = "Breakfast";
+        } else if(stringMealNumber.equals("1")) {
+            stringMealName = "Lunch";
+        } else if(stringMealNumber.equals("2")) {
+            stringMealName = "Snacks";
+        } else if(stringMealNumber.equals("3")) {
+            stringMealName = "Dinner";
+        }
+
+        populateListWithFood(stringMealNumber, stringMealName);
 
 //        initializeHome();
 

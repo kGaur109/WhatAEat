@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBAdapter {
     //    VARIABLES
     private static final String databaseName = "WhatAEat";
-    private static final int databaseVersion = 10;
+    private static final int databaseVersion = 13;
 
     //    DATABASE VARIABLES
     private final Context context;
@@ -77,9 +77,10 @@ public class DBAdapter {
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_cal_eaten (" +
                         " _id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        " cal_eaten_id INTEGER," +
-                        " cal_eaten_date DATE," +
-                        " cal_eaten_meal_number INT);");
+                        " fdce_id INT," +
+                        " fdce_meal_no INT," +
+                        " fdce_energy INT," +
+                        " fdce_date DATE);");
             }
             catch (SQLException e) {
                 e.printStackTrace();
@@ -213,6 +214,28 @@ public class DBAdapter {
 
     public Cursor select(String table, String[] fields, String whereClause, String whereCondition) throws SQLException {
         Cursor mCursor = db.query(table, fields, whereClause + " = " + whereCondition, null, null, null, null);
+        if(mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    public Cursor select(String table, String[] fields, String[] whereClause, String[] whereCondition, String[] whereAndOr) throws SQLException {
+
+        String where = "";
+        int arraySize = whereClause.length;
+        for(int x = 0; x < arraySize; x++) {
+            if(where.equals("")) {
+                where = whereClause[x] + "=" + whereCondition[x];
+            }
+            else {
+                where = where + " " + whereAndOr[x-1] + " " + whereClause[x] + "=" + whereCondition[x];
+            }
+        }
+
+//        Toast.makeText(context, where, Toast.LENGTH_SHORT).show();
+
+        Cursor mCursor = db.query(table, fields, where, null, null, null, null);
         if(mCursor != null) {
             mCursor.moveToFirst();
         }

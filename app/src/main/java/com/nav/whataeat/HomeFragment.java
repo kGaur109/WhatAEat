@@ -2,6 +2,7 @@ package com.nav.whataeat;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -154,9 +155,9 @@ public class HomeFragment extends Fragment {
         String stringDate = currentDateYear + "-" + currentDateMonth + "-" + currentDateDay;
 
         // Fill table
-        updateTable(stringDate, "0");
+        updateTableItems(stringDate, "0");
 
-        // ImageButton Listener
+        // ImageButton Listener BreakFast
         ImageView imageViewAddBreakfast = (ImageView)getActivity().findViewById(R.id.imageViewAddBreakfast);
         imageViewAddBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,11 +165,70 @@ public class HomeFragment extends Fragment {
                 addFood(0, "Breakfast"); // 0 == Breakfast
             }
         });
+        // TextView Listener BreakFast
+        TextView textViewHeadlineBreakfast = (TextView)getActivity().findViewById(R.id.textViewHeadlineBreakfast);
+        textViewHeadlineBreakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFood(0, "Breakfast"); // 0 == Breakfast
+            }
+        });
+
+//        // ImageButton Listener Lunch
+//        ImageView imageViewAddLunch = (ImageView)getActivity().findViewById(R.id.imageViewAddLunch);
+//        imageViewAddBreakfast.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addFood(1, "Lunch"); // 1 == Lunch
+//            }
+//        });
+//        // TextView Listener Lunch
+//        TextView textViewHeadlineLunch = (TextView)getActivity().findViewById(R.id.textViewHeadlineLunch);
+//        textViewHeadlineLunch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addFood(0, "Lunch"); // 1 == Lunch
+//            }
+//        });
+//
+//        // ImageButton Listener Snacks
+//        ImageView imageViewAddSnacks = (ImageView)getActivity().findViewById(R.id.imageViewAddSnacks);
+//        imageViewAddBreakfast.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addFood(2, "Snacks"); // 2 == Snacks
+//            }
+//        });
+//        // TextView Listener Snacks
+//        TextView textViewHeadlineSnacks = (TextView)getActivity().findViewById(R.id.textViewHeadlineSnacks);
+//        textViewHeadlineSnacks.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addFood(2, "Snacks"); // 2 == Snacks
+//            }
+//        });
+//
+//        // ImageButton Listener Dinner
+//        ImageView imageViewAddDinner = (ImageView)getActivity().findViewById(R.id.imageViewAddDinner);
+//        imageViewAddBreakfast.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addFood(3, "Dinner"); // 3 == Dinner
+//            }
+//        });
+//        // TextView Listener Dinner
+//        TextView textViewHeadlineDinner = (TextView)getActivity().findViewById(R.id.textViewHeadlineDinner);
+//        textViewHeadlineDinner.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addFood(3, "Dinner"); // 3 == Dinner
+//            }
+//        });
 
     } // initializeHome
 
-    // Update Table
-    private void updateTable(String stringDate, String mealNumber){
+    // Update Table Items
+    private void updateTableItems(String stringDate, String stringMealNumber){
 
         // Database open
         DBAdapter db = new DBAdapter(getActivity());
@@ -185,6 +245,7 @@ public class HomeFragment extends Fragment {
         };
 
         String stringDateSQL = db.quoteSmart(stringDate);
+        String stringMealNumberSQL = db.quoteSmart(stringMealNumber);
 
         Cursor cursorFd = db.select("food_diary", fields, "fd_date", stringDateSQL);
 
@@ -198,6 +259,48 @@ public class HomeFragment extends Fragment {
         };
 
         Cursor cursorFood;
+
+        // Select for Fdce
+        Cursor cursorFdce;
+        String[] fieldsFdce = new String[] {
+                "_id",
+                "fdce_id",
+                "fdce_meal_no",
+                "fdce_energy",
+                "fdce_date"
+        };
+
+        String[] whereClause = new String[] {
+                "fdce_date",
+                "fdce_meal_no"
+        };
+        String[] whereCondition = new String[] {
+                stringDateSQL,
+                stringMealNumberSQL
+        };
+        String[] whereAndOr = new String[] {
+                "AND"
+        };
+
+//        cursorFdce = db.select("food_diary_cal_eaten", fieldsFdce, "fdce_date", stringDateSQL);
+        cursorFdce = db.select("food_diary_cal_eaten", fieldsFdce, whereClause, whereCondition, whereAndOr);
+
+        int cursorFdceCount = cursorFdce.getCount();
+
+        int errorFdce = 0;
+        if(cursorFdceCount == 0) {
+            String inpFieldsFdce = "_id, fdce_date, fdce_meal_no, fdce_energy";
+            String inpValuesFdce = "NULL, " + stringDateSQL + ", " + stringMealNumberSQL + ", '0'";
+
+            db.insert("food_diary_cal_eaten", inpFieldsFdce, inpValuesFdce);
+
+            cursorFdce = db.select("food_diary_cal_eaten", fieldsFdce, whereClause, whereCondition, whereAndOr);
+        }
+        String stringFdceId = cursorFdce.getString(0);
+        long longFdceId = Long.parseLong(stringFdceId);
+
+        // Ready variables for sum
+        int intFdceEnergy = 0;
 
         int intCursorFdCount = cursorFd.getCount();
 
@@ -217,6 +320,14 @@ public class HomeFragment extends Fragment {
             // energy of food from food diary
             String foodEnergy = cursorFd.getString(5);
 
+            int intFoodEnergy = 0;
+            try {
+                intFoodEnergy = Integer.parseInt(foodEnergy);
+            }
+            catch (NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+
             // Add table Rows
             TableLayout tableLayout = (TableLayout)getActivity().findViewById(R.id.tableLayoutBreakfastItems);
             TableRow tableRow = new TableRow(getActivity());
@@ -235,20 +346,25 @@ public class HomeFragment extends Fragment {
             // add row to table layout
             tableLayout.addView(tableRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.FILL_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 
-//            // Update table
-//            TextView textViewBreakfastItemName = (TextView) getActivity().findViewById(R.id.textViewBreakfastItemName);
-//            textViewBreakfastItemName.setText(foodName);
-//
-//            TextView textViewBreakfastItemEnergy = (TextView) getActivity().findViewById(R.id.textViewBreakfastItemEnergy);
-//            textViewBreakfastItemEnergy.setText(foodEnergy);
+            // Sum field
+            intFdceEnergy = intFdceEnergy + intFoodEnergy;
 
             cursorFd.moveToNext();
         }
 
+        // Update  Fdce
+        TextView textViewEnergyBreakfast = (TextView)getActivity().findViewById(R.id.textViewEnergyBreakfast);
+        textViewEnergyBreakfast.setText("" + intFdceEnergy);
+
+        String inpValue = "'" + intFdceEnergy + "'";
+
+        db.update("food_diary_cal_eaten", "_id", longFdceId, "fdce_energy", inpValue);
+
         // Database close
         db.close();
 
-    }// updateTable
+    }// updateTableItems
+
 
     // Adding Food
     private void addFood(int mealNumber, String parentName) {
@@ -263,7 +379,7 @@ public class HomeFragment extends Fragment {
         }
         // Send Variable
         Bundle bundle = new Bundle();
-        bundle.putString("mealName", parentName);
+        bundle.putString("mealNumber", ""+mealNumber);
         fragment.setArguments(bundle);
 
         // Move user to correct layout

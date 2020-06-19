@@ -29,7 +29,8 @@
         <!--Breakfast-->
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="20dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -38,7 +39,9 @@
                 <ImageView
                     android:id="@+id/imageViewAddBreakfast"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingTop="5dp"
+                    android:layout_marginEnd="5dp"
                     android:src="@drawable/ic_menu_add" />
 
                 <TextView
@@ -46,16 +49,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="80"
-                    android:text="@string/breakfast"
-                    android:textSize="18sp"/>
+                    android:text="@string/food"
+                    android:textSize="28sp"/>
 
                 <TextView
-                android:id="@+id/textViewEnergyBreakfast"
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="10"
-                android:text="Energy"
-                android:textSize="18sp"/>
+                    android:id="@+id/textViewEnergyBreakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="10"
+                    android:paddingTop="5dp"
+                    android:text="Energy"
+                    android:textSize="18sp"/>
 
             </TableRow>
         </TableLayout>
@@ -66,35 +70,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/tableRowBreakfastItem"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textViewBreakfastItemName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="80"
-                    android:text="@string/name"
-                    android:textSize="18sp"/>
 
-                <TextView
-                    android:id="@+id/textViewBreakfastItemEnergy"
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_weight="10"
-                    android:text="Item Energy"
-                    android:textSize="18sp"/>
-
-            </TableRow>
         </TableLayout>
         <!--Breakfast-->
 
 <!--        &lt;!&ndash;Lunch&ndash;&gt;-->
 <!--        <TableLayout-->
 <!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent">-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginBottom="15dp">-->
 
 <!--            <TableRow-->
 <!--                android:layout_width="match_parent"-->
@@ -111,13 +96,130 @@
 <!--                    android:id="@+id/textViewHeadlineLunch"-->
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="Lunch"-->
+<!--                    android:layout_weight="80"-->
+<!--                    android:text="@string/lunch"-->
+<!--                    android:textSize="18sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewEnergyLunch"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="fill_parent"-->
+<!--                    android:layout_weight="10"-->
+<!--                    android:text="Energy"-->
 <!--                    android:textSize="18sp"/>-->
 
 <!--            </TableRow>-->
 
 <!--        </TableLayout>-->
-<!--        &lt;!&ndash;Lunch&ndash;&gt;-->
+
+<!--        &lt;!&ndash;Lunch Items&ndash;&gt;-->
+<!--        <TableLayout-->
+<!--            android:id="@+id/tableLayoutLunchItems"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+
+
+<!--        </TableLayout>-->
+<!--        &lt;!&ndash;Lunch Items&ndash;&gt;-->
+
+<!--        &lt;!&ndash;Snacks&ndash;&gt;-->
+<!--        <TableLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginBottom="15dp">-->
+
+<!--            <TableRow-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageViewAddSnacks"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_menu_add"-->
+<!--                    android:layout_marginBottom="10dp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewHeadlineSnacks"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="80"-->
+<!--                    android:text="@string/snacks"-->
+<!--                    android:textSize="18sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewEnergySnacks"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="fill_parent"-->
+<!--                    android:layout_weight="10"-->
+<!--                    android:text="Energy"-->
+<!--                    android:textSize="18sp"/>-->
+
+<!--            </TableRow>-->
+
+<!--        </TableLayout>-->
+<!--        &lt;!&ndash;Snacks&ndash;&gt;-->
+
+<!--        &lt;!&ndash;Snacks Items&ndash;&gt;-->
+<!--        <TableLayout-->
+<!--            android:id="@+id/tableLayoutSnacksItems"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+
+
+<!--        </TableLayout>-->
+<!--        &lt;!&ndash;Snacks Items&ndash;&gt;-->
+
+<!--        &lt;!&ndash;Dinner&ndash;&gt;-->
+<!--        <TableLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginBottom="15dp">-->
+
+<!--            <TableRow-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageViewAddDinner"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_menu_add"-->
+<!--                    android:layout_marginBottom="10dp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewHeadlineDinner"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="80"-->
+<!--                    android:text="@string/dinner"-->
+<!--                    android:textSize="18sp"/>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textViewEnergyDinner"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="fill_parent"-->
+<!--                    android:layout_weight="10"-->
+<!--                    android:text="Energy"-->
+<!--                    android:textSize="18sp"/>-->
+
+<!--            </TableRow>-->
+
+<!--        </TableLayout>-->
+<!--        &lt;!&ndash;Dinner&ndash;&gt;-->
+
+<!--        &lt;!&ndash;Dinner Items&ndash;&gt;-->
+<!--        <TableLayout-->
+<!--            android:id="@+id/tableLayoutDinnerItems"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+
+
+<!--        </TableLayout>-->
+<!--        &lt;!&ndash;Dinner Items&ndash;&gt;-->
 
     </LinearLayout>
 </ScrollView>
